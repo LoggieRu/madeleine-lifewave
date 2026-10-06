@@ -75,6 +75,9 @@
     .nav-links a:hover { color: var(--gold); }
     section[id], div[id], a[id] { scroll-margin-top: 78px; }
     @media (max-width: 700px) { .nav-links { gap: 16px; margin-right: 12px; } .nav-links a { font-size: 11px; } }
+    .to-top { position: fixed; right: 18px; bottom: 18px; z-index: 300; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35); background: #194F90; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 20px rgba(5,13,24,0.4); opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s, background 0.2s; }
+    .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+    .to-top:hover { background: #5FB4E5; }
     .nav-wa {
       display: inline-flex; align-items: center; gap: 6px;
       background: #25D366; color: #fff;
@@ -1443,6 +1446,15 @@
         saveLabel.textContent = 'Save & Continue';
       }, 1400);
     });
+  })();
+</script>
+
+<button type="button" class="to-top" id="toTop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
+<script>
+  (function () {
+    var b = document.getElementById('toTop');
+    window.addEventListener('scroll', function () { b.classList.toggle('show', window.scrollY > 500); }, { passive: true });
+    b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   })();
 </script>
 
