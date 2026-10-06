@@ -91,31 +91,45 @@
     /* ── HERO ────────────────────────────────── */
     .hero {
       min-height: 90vh;
-      background: linear-gradient(160deg, #081C33 0%, #0F2E56 45%, #050D18 100%);
+      background: linear-gradient(160deg, #0E3A6B 0%, #1B5A99 45%, #0A2A52 100%);
       display: flex; align-items: center;
       padding: 100px 22px 80px;
       position: relative; overflow: hidden;
     }
 
-    /* mesh grid overlay */
+    /* misty cloud overlay */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(95,180,229,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(95,180,229,0.05) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background:
+        radial-gradient(ellipse 60% 55% at 78% 40%, rgba(140,203,240,0.38) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 45% at 12% 25%, rgba(95,180,229,0.28) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 40% at 35% 90%, rgba(120,175,225,0.30) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 35% at 95% 95%, rgba(170,215,245,0.22) 0%, transparent 70%);
+      filter: blur(30px);
+      animation: mistDrift 28s ease-in-out infinite alternate;
       pointer-events: none;
     }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 45% 30% at 55% 15%, rgba(200,228,248,0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 20% 70%, rgba(150,200,240,0.16) 0%, transparent 70%);
+      filter: blur(40px);
+      animation: mistDrift 40s ease-in-out infinite alternate-reverse;
+      pointer-events: none;
+    }
+    @keyframes mistDrift { from { transform: translate3d(-3%, -2%, 0) scale(1.05); } to { transform: translate3d(3%, 2%, 0) scale(1.12); } }
 
     .hero-inner {
-      position: relative; z-index: 2; max-width: 1120px; margin: 0 auto;
+      position: relative; z-index: 2; max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between; gap: 56px;
     }
-    .hero-text { flex: 1 1 480px; max-width: 560px; }
+    .hero-text { flex: 1 1 420px; max-width: 520px; }
     .hero-photo-wrap { flex: 0 0 auto; }
     .hero-photo {
-      width: min(380px, 80vw); aspect-ratio: 2 / 3;
+      width: min(480px, 86vw); aspect-ratio: 2 / 3;
       object-fit: cover; object-position: top center;
       border-radius: 18px; border: 2px solid var(--border);
       box-shadow: 0 20px 60px rgba(5,13,24,0.55);
@@ -701,9 +715,9 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-links">
-      <a href="#videos">See It</a>
+      <a href="#videos">X39</a>
       <a href="#technology">Technology</a>
-      <a href="#patched">The Patches</a>
+      <a href="#patched">Patches</a>
       <a href="#sports">Athletes</a>
       <a href="#alavida">Skincare</a>
       <a href="#testimonials">Testimonies</a>
